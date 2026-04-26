@@ -1,3 +1,4 @@
+
 name: DevOps CI/CD Pipeline
 
 on:
@@ -12,17 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
     - name: Run tests
-      run: |
-        echo "Running tests..."
-        echo "All tests passed! ✅"
+      run: node app.test.js
     
-    - name: Build Docker image
-      run: |
-        echo "Building Docker image..."
-        echo "Image built successfully! ✅"
-    
-    - name: Deploy
-      run: |
-        echo "Deploying application..."
-        echo "Deployed successfully! ✅"
+    - name: Build success
+      run: echo "Build completed successfully! 🚀"
